@@ -58,3 +58,15 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+def listar_destinos(request):
+    return render(request, 'travelApp/listar_destinos.html')
+
+def agregar_destino(request):
+    return render(request, 'travelApp/agregar_destino.html')
+
+def editar_destino(request):
+    return render(request, 'travelApp/editar_destino.html')
+
+def eliminar_destino(request):
+    return render(request, 'travelApp/eliminar_destino.html')

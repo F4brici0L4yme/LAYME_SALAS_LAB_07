@@ -1,6 +1,10 @@
-from .models import DestinosTuristicos
+from django import forms
+from django.contrib.auth.models import User  # 👈 Importación necesaria
 
-class DestinoForm(forms.ModelForm):
+class RegistroUsuarioForm(forms.ModelForm):
     class Meta:
-        model = DestinosTuristicos
-        fields = '__all__'
+        model = User
+        fields = ['username', 'password', 'email']
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
