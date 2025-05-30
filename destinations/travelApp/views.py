@@ -26,3 +26,35 @@ def index(request):
     dests = [dest1, dest2, dest3]
 
     return render(request, "index.html", {'dests': dests})
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from .forms import RegistroUsuarioForm
+from django.contrib import messages
+
+def registro(request):
+    if request.method == 'POST':
+        form = RegistroUsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Usuario registrado exitosamente.')
+            return redirect('login')
+    else:
+        form = RegistroUsuarioForm()
+    return render(request, 'registro.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        usuario = authenticate(request, username=username, password=password)
+        if usuario is not None:
+            login(request, usuario)
+            return redirect('listar_destinos')
+        else:
+            messages.error(request, 'Credenciales incorrectas.')
+    return render(request, 'login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
