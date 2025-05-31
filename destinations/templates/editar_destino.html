@@ -5,9 +5,9 @@
     <title>Lista de Destinos Turísticos</title>
 </head>
 {% if user.is_authenticated %}
-  <p>Bienvenido, {{ user.username }} | <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+  <p>Bienvenido, {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
 {% else %}
-  <p><a href="{% url 'login' %}">Iniciar sesión</a> o <a href="{% url 'registro' %}">Registrarse</a></p>
+  <p><a href="{% url 'login' %}">Login</a> o <a href="{% url 'registro' %}">Register</a></p>
 {% endif %}
 <h2>Editar destino</h2>
 <form method="POST" enctype="multipart/form-data">
