@@ -4,6 +4,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Lista de Destinos Turísticos</title>
 </head>
+{% if user.is_authenticated %}
+  <p>Bienvenido, {{ user.username }} | <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+{% else %}
+  <p><a href="{% url 'login' %}">Iniciar sesión</a> o <a href="{% url 'registro' %}">Registrarse</a></p>
+{% endif %}
 <h2>Destinos Turísticos</h2>
 <a href="{% url 'agregar_destino' %}">Agregar nuevo destino</a>
 <ul>
