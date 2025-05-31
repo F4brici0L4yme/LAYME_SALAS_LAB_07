@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Agregar destino</title>
-</head>
-<body>
-    <h1>Formulario para agregar destino</h1>
-</body>
-</html>
+<h2>Agregar destino</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="nombreCiudad" placeholder="Nombre"><br>
+    <textarea name="descripcionCiudad" placeholder="Descripción"></textarea><br>
+    <input type="file" name="imagenCiudad"><br>
+    <input type="number" name="precioTour" placeholder="Precio"><br>
+    <label><input type="checkbox" name="ofertaTour"> Oferta</label><br>
+    <button type="submit">Guardar</button>
+</form>

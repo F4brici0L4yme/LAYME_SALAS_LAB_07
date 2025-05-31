@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Editar destino</title>
-</head>
-<body>
-    <h1>Editar destino</h1>
-</body>
-</html>
+<h2>Editar destino</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="nombreCiudad" value="{{ destino.nombreCiudad }}"><br>
+    <textarea name="descripcionCiudad">{{ destino.descripcionCiudad }}</textarea><br>
+    <input type="file" name="imagenCiudad"><br>
+    <input type="number" name="precioTour" value="{{ destino.precioTour }}"><br>
+    <label><input type="checkbox" name="ofertaTour" {% if destino.ofertaTour %}checked{% endif %}> Oferta</label><br>
+    <button type="submit">Actualizar</button>
+</form>
