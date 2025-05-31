@@ -21,19 +21,19 @@ def agregar_destino(request):
     if request.method == 'POST':
         nombre = request.POST['nombreCiudad']
         descripcion = request.POST['descripcionCiudad']
-        imagen = request.FILES['imagenCiudad']
+        imagen = request.FILES.get('imagenCiudad')
         precio = request.POST['precioTour']
         oferta = 'ofertaTour' in request.POST
 
-        destino = DestinosTuristicos(
+        DestinosTuristicos.objects.create(
             nombreCiudad=nombre,
             descripcionCiudad=descripcion,
             imagenCiudad=imagen,
             precioTour=precio,
             ofertaTour=oferta
         )
-        destino.save()
-        return redirect('/listar')
+
+        return redirect('listar_destinos')
 
     return render(request, '../templates/agregar_destino.html')
 

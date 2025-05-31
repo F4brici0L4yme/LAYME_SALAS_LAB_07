@@ -12,17 +12,17 @@
 <h2>Destinos Turísticos</h2>
 <a href="{% url 'agregar_destino' %}">Agregar nuevo destino</a>
 <ul>
-    {% for destino in destinos %}
-        <li>
-            <h3>{{ destino.nombreCiudad }}</h3>
-            <img src="{{ destino.imagenCiudad.url }}" width="150">
-            <p>{{ destino.descripcionCiudad }}</p>
-            <p>Precio: ${{ destino.precioTour }}</p>
-            {% if destino.ofertaTour %}
-                <p style="color:red;">¡En oferta!</p>
-            {% endif %}
-            <a href="{% url 'editar_destino' destino.id %}">Editar</a> |
+{% for destino in destinos %}
+  <div>
+    <h3>{{ destino.nombreCiudad }}</h3>
+    <img src="{{ destino.imagenCiudad.url }}" alt="Imagen de {{ destino.nombreCiudad }}" width="300">
+    <p>{{ destino.descripcionCiudad }}</p>
+    <p>Precio: ${{ destino.precioTour }}</p>
+    {% if destino.ofertaTour %}
+      <strong>¡En oferta!</strong>
+                  <a href="{% url 'editar_destino' destino.id %}">Editar</a> |
             <a href="{% url 'eliminar_destino' destino.id %}">Eliminar</a>
-        </li>
-    {% endfor %}
+    {% endif %}
+  </div>
+{% endfor %}
 </ul>

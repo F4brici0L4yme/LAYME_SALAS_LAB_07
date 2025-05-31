@@ -11,10 +11,20 @@
 <h2>Agregar destino</h2>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="text" name="nombreCiudad" placeholder="Nombre"><br>
-    <textarea name="descripcionCiudad" placeholder="Descripción"></textarea><br>
-    <input type="file" name="imagenCiudad"><br>
-    <input type="number" name="precioTour" placeholder="Precio"><br>
-    <label><input type="checkbox" name="ofertaTour"> Oferta</label><br>
+    <label for="nombreCiudad">Nombre de la Ciudad:</label>
+    <input type="text" name="nombreCiudad" required><br>
+
+    <label for="descripcionCiudad">Descripción:</label>
+    <textarea name="descripcionCiudad" required></textarea><br>
+
+    <label for="imagenCiudad">Imagen:</label>
+    <input type="file" name="imagenCiudad" required><br>
+
+    <label for="precioTour">Precio del Tour:</label>
+    <input type="number" step="0.01" name="precioTour" required><br>
+
+    <label for="ofertaTour">¿En oferta?</label>
+    <input type="checkbox" name="ofertaTour"><br>
+
     <button type="submit">Guardar</button>
 </form>
